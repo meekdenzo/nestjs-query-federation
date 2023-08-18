@@ -4,6 +4,6 @@ export const mongooseConfig = (
   overrides?: Partial<MongooseModuleOptions>,
 ): MongooseModuleOptions => ({
   // uri: `mongodb://localhost/${db}`,
-  uri: 'mongodb+srv://mall-dev:d4of0zpjZVxKjqEU@cluster0.vqbmmcs.mongodb.net/?retryWrites=true&w=majority',
+  uri: process.env.DB_URI,
   ...overrides,
 });

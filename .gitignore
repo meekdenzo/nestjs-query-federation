@@ -5,6 +5,9 @@
 # scrath
 .scrath
 
+# environment 
+.env
+
 # Logs
 logs
 *.log

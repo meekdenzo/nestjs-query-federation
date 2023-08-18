@@ -2,8 +2,7 @@ import { ObjectId } from '@ptc-org/nestjs-query-graphql';
 import { modelOptions, Prop, Ref } from '@typegoose/typegoose';
 import { Base } from '@typegoose/typegoose/lib/defaultClasses';
 import { Types } from 'mongoose';
-
-import { TodoItemEntity } from '../todo-item/todo-item.entity';
+import { TodoItemReferenceDTO } from './dto/todo-item-reference.dto';
 
 @modelOptions({
   schemaOptions: {
@@ -28,8 +27,8 @@ export class SubTaskEntity implements Base {
   completed!: boolean;
 
   @ObjectId()
-  @Prop({ ref: () => TodoItemEntity, required: true })
-  todoItem!: Ref<TodoItemEntity>;
+  @Prop({ ref: () => TodoItemReferenceDTO, required: true })
+  todoItem!: Ref<TodoItemReferenceDTO>;
 
   @Prop()
   createdAt!: Date;

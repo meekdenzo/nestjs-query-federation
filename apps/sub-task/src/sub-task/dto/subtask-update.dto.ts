@@ -7,9 +7,9 @@ import {
 } from '@ptc-org/nestjs-query-graphql';
 import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
+import { SubTaskDTO } from './sub-task.dto';
 import { GqlContext } from '../../auth.guard';
 import { getUserName } from '../../helpers';
-import { SubTaskDTO } from './sub-task.dto';
 
 @InputType('SubTaskUpdate')
 @BeforeUpdateOne(

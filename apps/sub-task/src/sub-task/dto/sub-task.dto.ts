@@ -7,13 +7,14 @@ import {
   Relation,
 } from '@ptc-org/nestjs-query-graphql';
 import mongoose from 'mongoose';
+import { TodoItemReferenceDTO } from './todo-item-reference.dto';
 
-import { TodoItemDTO } from '../../todo-item/dto/todo-item.dto';
+// import { TodoItemDTO } from '../../todo-item/dto/todo-item.dto';
 
 @ObjectType('SubTask')
 @KeySet(['id'])
 @QueryOptions({ enableTotalCount: true })
-@Relation('todoItem', () => TodoItemDTO, {
+@Relation('todoItem', () => TodoItemReferenceDTO, {
   update: { enabled: true },
 })
 export class SubTaskDTO {
