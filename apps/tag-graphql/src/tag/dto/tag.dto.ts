@@ -13,8 +13,8 @@ export class TagDTO {
   name!: string
 
   @FilterableField(() => GraphQLISODateTime)
-  created!: Date
+  createdAt!: Date
 
   @FilterableField(() => GraphQLISODateTime)
-  updated!: Date
+  updatedAt!: Date
 }
