@@ -6,16 +6,12 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 import { typeormOrmConfig } from '../../../helpers'
 import { TagModule } from './tag/tag.module'
 
-const { uri, ...options } = mongooseConfig('typegoose', {});
-
 @Module({
   imports: [
-    TypegooseModule.forRoot(uri, options),
+    TypeOrmModule.forRoot(typeormOrmConfig('federation_tag')),
     GraphQLModule.forRoot({
       driver: ApolloFederationDriver,
-      federationVersion: 2,
-      skipCheck: true,
-      autoSchemaFile: 'examples/todo-item-graphql/schema.gql'
+      autoSchemaFile: 'examples/tag/schema.gql'
     }),
     TagModule
   ]

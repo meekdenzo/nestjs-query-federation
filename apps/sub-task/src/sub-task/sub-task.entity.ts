@@ -1,44 +1,25 @@
-import { ObjectId } from '@ptc-org/nestjs-query-graphql';
-import { modelOptions, Prop, Ref } from '@typegoose/typegoose';
-import { Base } from '@typegoose/typegoose/lib/defaultClasses';
-import { Types } from 'mongoose';
-import { TodoItemReferenceDTO } from './dto/todo-item-reference.dto';
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 
-@modelOptions({
-  schemaOptions: {
-    timestamps: true,
-    collection: 'sub-tasks',
-    toObject: { virtuals: true },
-  },
-})
-export class SubTaskEntity implements Base {
-  @ObjectId()
-  _id!: Types.ObjectId;
+@Entity({ name: 'sub_task' })
+export class SubTaskEntity {
+  @PrimaryGeneratedColumn()
+  id!: number
 
-  id!: string;
+  @Column()
+  title!: string
 
-  @Prop({ required: true })
-  title!: string;
+  @Column({ nullable: true })
+  description?: string
 
-  @Prop()
-  description?: string;
+  @Column()
+  completed!: boolean
 
-  @Prop({ required: true })
-  completed!: boolean;
+  @Column({ nullable: false, name: 'todo_item_id' })
+  todoItemId!: number
 
-  @ObjectId()
-  @Prop({ ref: () => TodoItemReferenceDTO, required: true })
-  todoItem!: Ref<TodoItemReferenceDTO>;
+  @CreateDateColumn()
+  created!: Date
 
-  @Prop()
-  createdAt!: Date;
-
-  @Prop()
-  updatedAt!: Date;
-
-  @Prop()
-  createdBy?: string;
-
-  @Prop()
-  updatedBy?: string;
+  @UpdateDateColumn()
+  updated!: Date
 }

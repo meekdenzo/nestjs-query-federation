@@ -15,8 +15,8 @@ export class TagTodoItemDTO {
   todoItemId!: number
 
   @FilterableField(() => GraphQLISODateTime)
-  createdAt!: Date
+  created!: Date
 
   @FilterableField(() => GraphQLISODateTime)
-  updatedAt!: Date
+  updated!: Date
 }

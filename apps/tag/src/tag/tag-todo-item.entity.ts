@@ -1,32 +1,22 @@
-import { ObjectId } from '@ptc-org/nestjs-query-graphql';
-import { modelOptions, Prop, Ref } from '@typegoose/typegoose';
-import { Base } from '@typegoose/typegoose/lib/defaultClasses';
-import { Types } from 'mongoose';
+import { CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from 'typeorm'
 
 import { TagEntity } from './tag.entity'
 
-@modelOptions({
-  schemaOptions: {
-    timestamps: true,
-    collection: 'tags',
-    toObject: { virtuals: true },
-  },
-})export class TagTodoItemEntity implements Base {
-  @Prop()
+@Entity({ name: 'tag_todo_item' })
+export class TagTodoItemEntity {
+  @PrimaryColumn()
   tagId!: number
 
-  @Prop()
+  @PrimaryColumn()
   todoItemId!: number
 
-  @Prop()
-  createdAt!: Date
+  @CreateDateColumn()
+  created!: Date
 
-  @Prop()
-  updatedAt!: Date
+  @UpdateDateColumn()
+  updated!: Date
 
-  // @ManyToOne(() => TagEntity, (tag) => tag.tagTodoItems)
-  // @JoinColumn({ name: 'tagId' })
-
-  @Prop({ ref: () => TagEntity, required: true })
+  @ManyToOne(() => TagEntity, (tag) => tag.tagTodoItems)
+  @JoinColumn({ name: 'tagId' })
   tag!: TagEntity
 }

@@ -1,23 +1,19 @@
-import { ApolloFederationDriver } from '@nestjs/apollo';
-import { Module } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloFederationDriver } from '@nestjs/apollo'
+import { Module } from '@nestjs/common'
+import { GraphQLModule } from '@nestjs/graphql'
+import { TypeOrmModule } from '@nestjs/typeorm'
 
-import { SubTaskModule } from './sub-task/sub-task.module';
-import { mongooseConfig } from 'helpers';
-import { TypegooseModule } from 'nestjs-typegoose';
-
-const { uri, ...options } = mongooseConfig('typegoose', {});
+import { typeormOrmConfig } from '../../../helpers'
+import { SubTaskModule } from './sub-task/sub-task.module'
 
 @Module({
   imports: [
-    TypegooseModule.forRoot(uri, options),
+    TypeOrmModule.forRoot(typeormOrmConfig('federation_sub_task')),
     GraphQLModule.forRoot({
       driver: ApolloFederationDriver,
-      federationVersion: 2,
-      skipCheck: true,
-      autoSchemaFile: 'examples/todo-item-graphql/schema.gql',
+      autoSchemaFile: 'examples/sub-task/schema.gql'
     }),
-    SubTaskModule,
-  ],
+    SubTaskModule
+  ]
 })
 export class AppModule {}

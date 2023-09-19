@@ -1,23 +1,19 @@
-import { ApolloFederationDriver } from '@nestjs/apollo';
-import { Module } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloFederationDriver } from '@nestjs/apollo'
+import { Module } from '@nestjs/common'
+import { GraphQLModule } from '@nestjs/graphql'
+import { TypeOrmModule } from '@nestjs/typeorm'
 
-import { TodoItemModule } from './todo-item/todo-item.module';
-import { mongooseConfig } from 'helpers';
-import { TypegooseModule } from 'nestjs-typegoose';
-
-const { uri, ...options } = mongooseConfig('typegoose', {});
+import { typeormOrmConfig } from '../../../helpers'
+import { TodoItemModule } from './todo-item/todo-item.module'
 
 @Module({
   imports: [
-    TypegooseModule.forRoot(uri, options),
+    TypeOrmModule.forRoot(typeormOrmConfig('federation_todo_item')),
     GraphQLModule.forRoot({
       driver: ApolloFederationDriver,
-      federationVersion: 2,
-      skipCheck: true,
-      autoSchemaFile: 'examples/todo-item-graphql/schema.gql',
+      autoSchemaFile: 'examples/todo-item/schema.gql'
     }),
-    TodoItemModule,
-  ],
+    TodoItemModule
+  ]
 })
 export class AppModule {}
