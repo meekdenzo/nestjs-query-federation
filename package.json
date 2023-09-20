@@ -22,6 +22,7 @@
   "dependencies": {
     "@apollo/federation": "0.38.1",
     "@apollo/server": "^4.9.0",
+    "@apollo/subgraph": "^2.5.5",
     "@docusaurus/core": "2.4.1",
     "@docusaurus/preset-classic": "2.4.1",
     "@m8a/nestjs-typegoose": "11.0.2",
@@ -55,8 +56,7 @@
   },
   "devDependencies": {
     "@actions/core": "^1.10.0",
-    "@apollo/gateway": "2.1.2",
-    "@apollo/subgraph": "2.1.2",
+    "@apollo/gateway": "2.5.1",
     "@commitlint/cli": "17.6.7",
     "@commitlint/config-conventional": "^17.6.7",
     "@docusaurus/module-type-aliases": "2.4.1",
