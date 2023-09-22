@@ -1,10 +1,10 @@
-import { ApolloFederationDriver } from '@nestjs/apollo'
-import { Module } from '@nestjs/common'
-import { GraphQLModule } from '@nestjs/graphql'
-import { TypeOrmModule } from '@nestjs/typeorm'
+import { ApolloFederationDriver } from '@nestjs/apollo';
+import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { typeormOrmConfig } from '../../../helpers'
-import { TodoItemModule } from './todo-item/todo-item.module'
+import { typeormOrmConfig } from '../../../helpers';
+import { TodoItemModule } from './todo-item/todo-item.module';
 
 @Module({
   imports: [
@@ -15,7 +15,7 @@ import { TodoItemModule } from './todo-item/todo-item.module'
         federation: 2,
       },
     }),
-    TodoItemModule
-  ]
+    TodoItemModule,
+  ],
 })
 export class AppModule {}

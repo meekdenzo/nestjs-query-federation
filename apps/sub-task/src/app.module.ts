@@ -1,10 +1,10 @@
-import { ApolloFederationDriver } from '@nestjs/apollo'
-import { Module } from '@nestjs/common'
-import { GraphQLModule } from '@nestjs/graphql'
-import { TypeOrmModule } from '@nestjs/typeorm'
+import { ApolloFederationDriver } from '@nestjs/apollo';
+import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { typeormOrmConfig } from '../../../helpers'
-import { SubTaskModule } from './sub-task/sub-task.module'
+import { typeormOrmConfig } from '../../../helpers';
+import { SubTaskModule } from './sub-task/sub-task.module';
 
 @Module({
   imports: [
@@ -15,7 +15,7 @@ import { SubTaskModule } from './sub-task/sub-task.module'
         federation: 2,
       },
     }),
-    SubTaskModule
-  ]
+    SubTaskModule,
+  ],
 })
 export class AppModule {}

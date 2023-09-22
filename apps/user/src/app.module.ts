@@ -1,10 +1,10 @@
-import { ApolloFederationDriver } from '@nestjs/apollo'
-import { Module } from '@nestjs/common'
-import { GraphQLModule } from '@nestjs/graphql'
-import { TypeOrmModule } from '@nestjs/typeorm'
+import { ApolloFederationDriver } from '@nestjs/apollo';
+import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { typeormOrmConfig } from '../../../helpers'
-import { UserModule } from './user/user.module'
+import { typeormOrmConfig } from '../../../helpers';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -15,7 +15,7 @@ import { UserModule } from './user/user.module'
         federation: 2,
       },
     }),
-    UserModule
-  ]
+    UserModule,
+  ],
 })
 export class AppModule {}

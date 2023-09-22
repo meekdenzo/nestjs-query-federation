@@ -1,11 +1,11 @@
-import { Module } from '@nestjs/common'
-import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql'
-import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm'
+import { Module } from '@nestjs/common';
+import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
+import { NestjsQueryTypeOrmModule } from '@ptc-org/nestjs-query-typeorm';
 
-import { UserDTO } from './dto/user.dto'
-import { UserInputDTO } from './dto/user-input.dto'
-import { UserUpdateDTO } from './dto/user-update.dto'
-import { UserEntity } from './user.entity'
+import { UserDTO } from './dto/user.dto';
+import { UserInputDTO } from './dto/user-input.dto';
+import { UserUpdateDTO } from './dto/user-update.dto';
+import { UserEntity } from './user.entity';
 
 @Module({
   imports: [
@@ -17,10 +17,10 @@ import { UserEntity } from './user.entity'
           EntityClass: UserEntity,
           CreateDTOClass: UserInputDTO,
           UpdateDTOClass: UserUpdateDTO,
-          referenceBy: { key: 'id' }
-        }
-      ]
-    })
-  ]
+          referenceBy: { key: 'id' },
+        },
+      ],
+    }),
+  ],
 })
 export class UserModule {}
